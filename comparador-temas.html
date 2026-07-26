@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Psico das Pretas — comparador de temas</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,700&family=Crimson+Pro:wght@300;400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;background:#15171c;color:#e8e6e1;line-height:1.6}
+.topo{padding:44px 28px 30px;max-width:1120px;margin:0 auto}
+.topo h1{font-family:Fraunces,serif;font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:600;margin-bottom:12px}
+.topo p{color:#a3a09a;max-width:660px;font-size:1.02rem}
+.aviso{margin-top:22px;padding:16px 20px;border-left:3px solid #E3B458;background:rgba(227,180,88,.09);font-size:.93rem;color:#cfcbc3;border-radius:0 6px 6px 0}
+
+.abas{display:flex;gap:8px;flex-wrap:wrap;max-width:1120px;margin:34px auto 0;padding:0 28px}
+.aba{background:#22252c;border:1px solid #33373f;color:#c9c6c0;padding:12px 22px;border-radius:100px;cursor:pointer;font-size:.94rem;font-family:inherit;transition:.2s}
+.aba:hover{border-color:#5a5f6a}
+.aba[aria-selected="true"]{background:#e8e6e1;color:#15171c;border-color:#e8e6e1;font-weight:600}
+
+.palco{max-width:1120px;margin:26px auto 0;padding:0 28px 70px}
+.tela{display:none}
+.tela.ativa{display:block}
+.moldura{border-radius:16px;overflow:hidden;border:1px solid #33373f;box-shadow:0 24px 70px rgba(0,0,0,.45)}
+.barra-nav{background:#22252c;padding:11px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #33373f}
+.bolha{width:11px;height:11px;border-radius:50%}
+.url{margin-left:12px;font-size:.78rem;color:#7d8089;font-family:ui-monospace,monospace}
+
+/* ---------- Demonstração comum ---------- */
+.demo{padding:clamp(40px,6vw,72px) clamp(26px,5vw,60px);position:relative;overflow:hidden}
+.etiqueta{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;display:block;margin-bottom:20px}
+.demo h2{font-size:clamp(1.9rem,4.2vw,3rem);line-height:1.14;font-weight:600;margin-bottom:20px;max-width:15ch}
+.demo h2 em{font-style:italic}
+.sub{font-size:1.06rem;max-width:46ch;margin-bottom:32px;line-height:1.7}
+.botoes{display:flex;gap:13px;flex-wrap:wrap;margin-bottom:44px}
+.b{padding:15px 30px;border-radius:100px;font-size:.96rem;font-weight:600;text-decoration:none;display:inline-block;border:1.5px solid transparent}
+.stats{display:flex;gap:38px;flex-wrap:wrap;padding-top:26px}
+.stat b{display:block;font-size:1.6rem;font-family:Fraunces,serif;font-weight:300;line-height:1}
+.stat span{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-top:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px;margin-top:44px}
+.card{padding:26px 24px;border-radius:15px}
+.card h3{font-family:Fraunces,serif;font-size:1.07rem;font-weight:600;margin-bottom:8px}
+.card p{font-size:.9rem;line-height:1.6}
+
+/* ============ TEMA A — Céu de Oxóssi (atual) ============ */
+.tA{background:#060B16;color:#F2E9D8;font-family:'Crimson Pro',serif}
+.tA .etiqueta{color:#E3B458}
+.tA h2{font-family:Fraunces,serif;color:#F2E9D8}
+.tA h2 em{color:#E3B458}
+.tA .sub{color:rgba(242,233,216,.72)}
+.tA .b1{background:#E3B458;color:#060B16}
+.tA .b2{border-color:rgba(227,180,88,.4);color:#F2E9D8}
+.tA .stats{border-top:1px solid rgba(227,180,88,.22)}
+.tA .stat b{color:#E3B458}
+.tA .stat span{color:rgba(242,233,216,.6)}
+.tA .card{background:#0B1526;border:1px solid rgba(227,180,88,.22)}
+.tA .card h3{color:#E3B458}
+.tA .card p{color:rgba(242,233,216,.72)}
+.estrela{position:absolute;border-radius:50%;background:#E3B458;opacity:.5}
+
+/* ============ TEMA B — Oxóssi suavizado ============ */
+.tB{background:#101B18;color:#EFEAE0;font-family:'Crimson Pro',serif}
+.tB .etiqueta{color:#7FB89A}
+.tB h2{font-family:Fraunces,serif;color:#EFEAE0}
+.tB h2 em{color:#C9A86A}
+.tB .sub{color:rgba(239,234,224,.76)}
+.tB .b1{background:#28795A;color:#fff}
+.tB .b2{border-color:rgba(239,234,224,.3);color:#EFEAE0}
+.tB .stats{border-top:1px solid rgba(239,234,224,.16)}
+.tB .stat b{color:#7FB89A}
+.tB .stat span{color:rgba(239,234,224,.6)}
+.tB .card{background:#16241F;border:1px solid rgba(127,184,154,.2)}
+.tB .card h3{color:#7FB89A}
+.tB .card p{color:rgba(239,234,224,.74)}
+
+/* ============ TEMA C — Claro e acolhedor ============ */
+.tC{background:#FAF6F0;color:#2A2622;font-family:'Crimson Pro',serif}
+.tC .etiqueta{color:#7D6145}
+.tC h2{font-family:Fraunces,serif;color:#221F1C}
+.tC h2 em{color:#9C5A34}
+.tC .sub{color:#5C554D}
+.tC .b1{background:#2F5D4A;color:#fff}
+.tC .b2{border-color:#2F5D4A;color:#2F5D4A}
+.tC .stats{border-top:1px solid #DED5C7}
+.tC .stat b{color:#2F5D4A}
+.tC .stat span{color:#7A7167}
+.tC .card{background:#fff;border:1px solid #E6DCCE}
+.tC .card h3{color:#2F5D4A}
+.tC .card p{color:#5C554D}
+
+/* ---------- Ficha de análise ---------- */
+.ficha{margin-top:26px;background:#1c1f25;border:1px solid #33373f;border-radius:14px;padding:28px 30px}
+.ficha h3{font-family:Fraunces,serif;font-size:1.2rem;margin-bottom:18px;font-weight:600}
+.linha{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:13px 0;border-top:1px solid #2a2e35;font-size:.94rem}
+.linha:first-of-type{border-top:none}
+.rot{color:#8f9299;font-size:.85rem;padding-top:1px}
+.pro{color:#8fd6ab}.con{color:#e8a87c}
+.selo{display:inline-block;font-size:.74rem;padding:4px 12px;border-radius:100px;background:#2a2e35;color:#a3a09a;margin-left:8px;vertical-align:middle;letter-spacing:.04em}
+@media(max-width:640px){.linha{grid-template-columns:1fr;gap:5px}.stats{gap:24px}}
+</style>
+</head>
+<body>
+
+<div class="topo">
+  <h1>Três caminhos visuais para a Psico das Pretas</h1>
+  <p>
+    O mesmo conteúdo, a mesma estrutura e os mesmos textos em três tratamentos visuais. Clique nas
+    abas para comparar. Abaixo de cada um, o que ele ganha e o que ele custa.
+  </p>
+  <div class="aviso">
+    <strong>Antes de escolher:</strong> os três passam no contraste mínimo de acessibilidade. Essa
+    não é a variável de decisão. A pergunta real é quem vocês querem que se sinta em casa ao abrir a
+    página — e quem talvez não se reconheça nela.
+  </div>
+</div>
+
+<div class="abas" role="tablist">
+  <button class="aba" role="tab" aria-selected="true"  data-t="A">A · Céu de Oxóssi <span style="opacity:.6">(atual)</span></button>
+  <button class="aba" role="tab" aria-selected="false" data-t="B">B · Oxóssi suavizado</button>
+  <button class="aba" role="tab" aria-selected="false" data-t="C">C · Claro e acolhedor</button>
+</div>
+
+<div class="palco">
+
+  <!-- ============ A ============ -->
+  <section class="tela ativa" id="telaA">
+    <div class="moldura">
+      <div class="barra-nav">
+        <span class="bolha" style="background:#ff5f57"></span><span class="bolha" style="background:#febc2e"></span><span class="bolha" style="background:#28c840"></span>
+        <span class="url">psicodaspretas.com.br</span>
+      </div>
+      <div class="demo tA" id="ceuA">
+        <span class="etiqueta">Cuidado · Escuta · Pertencimento</span>
+        <h2>Psicoterapia racializada para quem <em>ressignifica o existir</em></h2>
+        <p class="sub">Escuta, cuidado e presença para pessoas pretas, LGBTQIA+ e todas as trajetórias singulares — onde ancestralidade e ciência caminham juntas.</p>
+        <div class="botoes"><a class="b b1" href="#">Falar no WhatsApp</a><a class="b b2" href="#">Conhecer a clínica</a></div>
+        <div class="stats">
+          <div class="stat"><b>+1.000</b><span>pessoas atendidas</span></div>
+          <div class="stat"><b>100%</b><span>online</span></div>
+          <div class="stat"><b>NF</b><span>para reembolso</span></div>
+        </div>
+        <div class="cards">
+          <div class="card"><h3>Ancestralidade</h3><p>Saberes e raízes que sustentam nossa prática e história.</p></div>
+          <div class="card"><h3>Diversidade</h3><p>Todas as identidades, corpos e expressões, com respeito.</p></div>
+          <div class="card"><h3>Cuidado integral</h3><p>Corpo, mente e espírito em harmonia.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="ficha">
+      <h3>A · Céu de Oxóssi <span class="selo">o que está no ar hoje</span></h3>
+      <div class="linha"><span class="rot">A favor</span><span class="pro">Assinatura visual imediata. Num mercado de sites bege e pastel, esse é reconhecível em meio segundo. A ancestralidade é o posicionamento declarado, e aqui ela aparece antes da primeira palavra — a promessa se cumpre sozinha.</span></div>
+      <div class="linha"><span class="rot">A favor</span><span class="pro">Para quem busca cuidado racializado, a referência de terreiro e céu estrelado comunica pertencimento sem precisar explicar.</span></div>
+      <div class="linha"><span class="rot">Custo</span><span class="con">Oxóssi é específico de Candomblé e Umbanda. Parte relevante da população preta brasileira é evangélica, e pode ler a página como religiosamente marcada.</span></div>
+      <div class="linha"><span class="rot">Custo</span><span class="con">Dourado sobre preto lê como sofisticado e caro. Isso pode conflitar com a proposta de valores sociais e afastar exatamente quem mais precisa do acesso.</span></div>
+      <div class="linha"><span class="rot">Escolha se</span><span>a marcação ancestral for inegociável e o público-alvo for de quem já se identifica com ela.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ B ============ -->
+  <section class="tela" id="telaB">
+    <div class="moldura">
+      <div class="barra-nav">
+        <span class="bolha" style="background:#ff5f57"></span><span class="bolha" style="background:#febc2e"></span><span class="bolha" style="background:#28c840"></span>
+        <span class="url">psicodaspretas.com.br</span>
+      </div>
+      <div class="demo tB">
+        <span class="etiqueta">Cuidado · Escuta · Pertencimento</span>
+        <h2>Psicoterapia racializada para quem <em>ressignifica o existir</em></h2>
+        <p class="sub">Escuta, cuidado e presença para pessoas pretas, LGBTQIA+ e todas as trajetórias singulares — onde ancestralidade e ciência caminham juntas.</p>
+        <div class="botoes"><a class="b b1" href="#">Falar no WhatsApp</a><a class="b b2" href="#">Conhecer a clínica</a></div>
+        <div class="stats">
+          <div class="stat"><b>+1.000</b><span>pessoas atendidas</span></div>
+          <div class="stat"><b>100%</b><span>online</span></div>
+          <div class="stat"><b>NF</b><span>para reembolso</span></div>
+        </div>
+        <div class="cards">
+          <div class="card"><h3>Ancestralidade</h3><p>Saberes e raízes que sustentam nossa prática e história.</p></div>
+          <div class="card"><h3>Diversidade</h3><p>Todas as identidades, corpos e expressões, com respeito.</p></div>
+          <div class="card"><h3>Cuidado integral</h3><p>Corpo, mente e espírito em harmonia.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="ficha">
+      <h3>B · Oxóssi suavizado <span class="selo">meio-termo</span></h3>
+      <div class="linha"><span class="rot">O que muda</span><span>O verde-mata assume o lugar do dourado como cor principal. A mata continua sendo Oxóssi, mas sem o brilho de ouro que puxa a leitura para luxo. Fundo escuro esverdeado em vez de preto-noite.</span></div>
+      <div class="linha"><span class="rot">A favor</span><span class="pro">Mantém a identidade ancestral e a diferenciação, mas o botão verde comunica acesso em vez de exclusividade — mais coerente com valores sociais.</span></div>
+      <div class="linha"><span class="rot">A favor</span><span class="pro">A referência fica menos literal a uma religião específica: mata e natureza são leitura mais ampla que estrela dourada em céu de terreiro.</span></div>
+      <div class="linha"><span class="rot">Custo</span><span class="con">Perde parte do impacto. O céu estrelado é mais memorável que o verde escuro, e memorabilidade tem valor real quando a captação é por indicação.</span></div>
+      <div class="linha"><span class="rot">Escolha se</span><span>quiserem manter a alma da marca mas ampliar quem se sente convidado.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ C ============ -->
+  <section class="tela" id="telaC">
+    <div class="moldura">
+      <div class="barra-nav">
+        <span class="bolha" style="background:#ff5f57"></span><span class="bolha" style="background:#febc2e"></span><span class="bolha" style="background:#28c840"></span>
+        <span class="url">psicodaspretas.com.br</span>
+      </div>
+      <div class="demo tC">
+        <span class="etiqueta">Cuidado · Escuta · Pertencimento</span>
+        <h2>Psicoterapia racializada para quem <em>ressignifica o existir</em></h2>
+        <p class="sub">Escuta, cuidado e presença para pessoas pretas, LGBTQIA+ e todas as trajetórias singulares — onde ancestralidade e ciência caminham juntas.</p>
+        <div class="botoes"><a class="b b1" href="#">Falar no WhatsApp</a><a class="b b2" href="#">Conhecer a clínica</a></div>
+        <div class="stats">
+          <div class="stat"><b>+1.000</b><span>pessoas atendidas</span></div>
+          <div class="stat"><b>100%</b><span>online</span></div>
+          <div class="stat"><b>NF</b><span>para reembolso</span></div>
+        </div>
+        <div class="cards">
+          <div class="card"><h3>Ancestralidade</h3><p>Saberes e raízes que sustentam nossa prática e história.</p></div>
+          <div class="card"><h3>Diversidade</h3><p>Todas as identidades, corpos e expressões, com respeito.</p></div>
+          <div class="card"><h3>Cuidado integral</h3><p>Corpo, mente e espírito em harmonia.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="ficha">
+      <h3>C · Claro e acolhedor <span class="selo">maior alcance</span></h3>
+      <div class="linha"><span class="rot">O que muda</span><span>Fundo claro em tom de barro, terracota nos destaques e verde profundo nos botões. Referência à terra e ao artesanal, sem marcação religiosa.</span></div>
+      <div class="linha"><span class="rot">A favor</span><span class="pro">Não exclui ninguém por leitura religiosa. Para uma clínica que declara atender todas as pessoas, o visual passa a dizer o mesmo que o texto diz.</span></div>
+      <div class="linha"><span class="rot">A favor</span><span class="pro">Texto longo em fundo claro cansa menos em leitura prolongada no celular, e a maior parte do acesso vem de celular.</span></div>
+      <div class="linha"><span class="rot">Custo</span><span class="con">Perde a assinatura. Este é o tema que mais se parece com o de qualquer outra clínica — e diferenciação é justamente o que a Psico das Pretas tem de sobra hoje.</span></div>
+      <div class="linha"><span class="rot">Custo</span><span class="con">Pode ser lido como recuo político. A marca se chama Psico das Pretas; suavizar demais o visual pode enfraquecer a coerência da proposta.</span></div>
+      <div class="linha"><span class="rot">Escolha se</span><span>a prioridade for volume e alcance amplo, acima de identidade forte.</span></div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+document.querySelectorAll('.aba').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('.aba').forEach(function(x){x.setAttribute('aria-selected','false')});
+    b.setAttribute('aria-selected','true');
+    document.querySelectorAll('.tela').forEach(function(t){t.classList.remove('ativa')});
+    document.getElementById('tela'+b.dataset.t).classList.add('ativa');
+  });
+});
+// Estrelas do tema A
+(function(){
+  var c=document.getElementById('ceuA');
+  for(var i=0;i<38;i++){
+    var e=document.createElement('span');
+    e.className='estrela';
+    var r=Math.random()<.25?2.4:1.3;
+    e.style.cssText='width:'+r+'px;height:'+r+'px;left:'+(Math.random()*100)+'%;top:'+(Math.random()*100)+'%;opacity:'+(0.2+Math.random()*0.5);
+    c.appendChild(e);
+  }
+})();
+</script>
+</body>
+</html>
