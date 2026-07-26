@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ozannese.github.io/psicodaspretas/sitemap.xml
+Sitemap: https://psicodaspretas.com.br/sitemap.xml
