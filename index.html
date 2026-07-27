@@ -75,7 +75,7 @@
 
 <!-- Icone da aba: estrela de Oxossi, desenhada no proprio codigo -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23060B16'/%3E%3Cpath d='M20 7l2.6 8.4H31l-6.8 5 2.6 8.4L20 23.6l-6.8 5.2 2.6-8.4-6.8-5h8.4z' fill='%23E3B458'/%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="https://psicodaspretas.com.br/preview.jpg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 <script type="application/ld+json">
 {
@@ -181,7 +181,11 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Crimson Pro',Georgia,serif;font-weight:400;font-size:1.14rem;line-height:1.7;color:var(--creme);background:radial-gradient(1200px 800px at 80% -10%,#122036 0%,var(--noite) 55%) fixed,var(--noite)}
+/* overflow-x:clip e nao hidden: clip nao cria contexto de rolagem,
+   entao o header sticky continua funcionando. As estrelas decorativas
+   do .portal usam offsets negativos e vazavam 5px no celular. */
+html{overflow-x:clip}
+body{overflow-x:clip;font-family:'Crimson Pro',Georgia,serif;font-weight:400;font-size:1.14rem;line-height:1.7;color:var(--creme);background:radial-gradient(1200px 800px at 80% -10%,#122036 0%,var(--noite) 55%) fixed,var(--noite)}
 h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif}
 img{max-width:100%;display:block}
 a{color:inherit}
@@ -214,6 +218,13 @@ header{position:sticky;top:0;z-index:90;background:rgba(6,11,22,.78);backdrop-fi
 .nav{max-width:1160px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.95rem 1.5rem}
 .marca{font-family:'Fraunces',serif;font-weight:600;font-size:1.28rem;letter-spacing:.02em;text-decoration:none;display:flex;align-items:center;gap:.65rem}
 .marca svg{flex:none}
+/* No celular a marca quebrava em duas linhas e o header ia a 111px. */
+@media(max-width:520px){
+  .marca{font-size:1.06rem;gap:.5rem;white-space:nowrap}
+  .marca svg{width:26px;height:26px}
+  .nav{padding:.7rem 1rem;gap:.6rem}
+  .nav .btn-ouro{font-size:.85rem;padding:.6rem 1rem;white-space:nowrap}
+}
 .nav ul{display:flex;gap:1.6rem;list-style:none;font-size:1.02rem}
 .nav ul a{text-decoration:none;color:var(--creme-dim);transition:color .25s}
 .nav ul a:hover{color:var(--ouro-claro)}
