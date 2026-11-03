@@ -6,10 +6,13 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']});
+  try{if(localStorage.getItem('consent-pdp')==='sim'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
   gtag('js', new Date());
   gtag('config', 'AW-18538540122');
 </script>
 <script src="/conversoes.js" defer></script>
+<script src="/consentimento.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Primeira sessão de psicoterapia afrocentrada: como funciona</title>
@@ -57,7 +60,7 @@ footer{text-align:center;font-size:.9rem;color:var(--creme-dim);padding:28px 24p
   <p class="acoes"><a class="cta" href="https://forms.gle/KLvGwENX2dZJt2N77" target="_blank" rel="noopener">Quero começar</a> <a class="sec" href="https://wa.me/5522997019878?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20a%20primeira%20sess%C3%A3o." target="_blank" rel="noopener">ou fale com a gente pelo WhatsApp</a></p>
 
   <h2>Quem cuida</h2>
-  <p class="quem">Mariana Pereira e Priscila Baptista, psicólogas pretas e fundadoras da casa. A escuta parte de quem conhece raça, território e ascensão por dentro, e se apoia no pensamento negro brasileiro, de Neusa Santos Souza a Lélia Gonzalez. A abordagem é a Gestalt-terapia, que olha para o que acontece no encontro, e não só para o que já aconteceu.</p>
+  <p class="quem">Mariana Pereira Rosa (CRP 05/67623) e Priscila Brasileiro (CRP 05/51361), psicólogas pretas e fundadoras da casa. A escuta parte de quem conhece raça, território e ascensão por dentro, e se apoia no pensamento negro brasileiro, de Neusa Santos Souza a Lélia Gonzalez. A abordagem é a Gestalt-terapia, que olha para o que acontece no encontro, e não só para o que já aconteceu.</p>
 
   <h2>Para quem é</h2>
   <p>A casa nasceu da escuta de mulheres pretas, e é a partir dela que pensa o cuidado. Um cuidado para quem chegou longe e cansou de provar o tempo todo, para quem vive fora do Brasil e quer ser ouvida em português, por quem entende de raça, e para quem convive com raça dentro de casa e quer cuidar bem de quem ama.</p>
@@ -94,7 +97,7 @@ footer{text-align:center;font-size:.9rem;color:var(--creme-dim);padding:28px 24p
   <p>Tem dúvidas antes? <a href="https://wa.me/5522997019878?text=Ol%C3%A1%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20a%20primeira%20sess%C3%A3o." target="_blank" rel="noopener">Fale com a gente pelo WhatsApp</a>.</p>
 </main>
 
-<footer>© 2026 Psico das Pretas · Psicoterapia online</footer>
+<footer>© 2026 Psico das Pretas · Psicoterapia online · <a href="/privacidade.html">Privacidade</a> · <a href="/termos.html">Termos</a></footer>
 
 </body>
 </html>

@@ -6,10 +6,13 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',region:['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','IS','LI','NO','GB','CH']});
+  try{if(localStorage.getItem('consent-pdp')==='sim'){gtag('consent','update',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',analytics_storage:'granted'});}}catch(e){}
   gtag('js', new Date());
   gtag('config', 'AW-18538540122');
 </script>
 <script src="/conversoes.js" defer></script>
+<script src="/consentimento.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
@@ -65,7 +68,7 @@ footer{text-align:center;font-size:.9rem;color:var(--creme-dim);padding:28px 24p
   <p style="margin-top:40px;font-size:.95rem;color:var(--creme-dim)">Se você está em sofrimento neste momento, não espere o nosso contato. No Brasil, ligue para o CVV no 188, 24 horas e gratuito, ou para o 190 em emergência. Fora do Brasil, ligue para o número de emergência do país onde você está.</p>
 </main>
 
-<footer>© 2026 Psico das Pretas · Psicoterapia online</footer>
+<footer>© 2026 Psico das Pretas · Psicoterapia online · <a href="/privacidade.html">Privacidade</a> · <a href="/termos.html">Termos</a></footer>
 
 </body>
 </html>
