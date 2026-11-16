@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oficina on-line: psicologia antirracista · Psico das Pretas</title>
+<meta name="description" content="Oficina on-line da Psicologia das Pretas para estudantes de Psicologia: ser antirracista na clínica em tempos de pressa e de IA. Sábado, 12 de dezembro.">
+<link rel="canonical" href="https://psicodaspretas.com.br/oficina/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://psicodaspretas.com.br/oficina/">
+<meta property="og:title" content="Oficina on-line: psicologia antirracista na prática">
+<meta property="og:description" content="Um encontro de trocas, não uma aula. Sábado, 12 de dezembro, on-line.">
+<meta property="og:image" content="https://psicodaspretas.com.br/oficina/img/encontro.jpg">
+<meta name="theme-color" content="#F4ECDD">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Crimson+Pro:ital,wght@0,400..600;1,400..500&display=swap">
+<style>
+/* Identidade da casa: creme, tinta, terracota e dourado; Fraunces nos títulos, Crimson Pro no texto.
+   Layout: celular primeiro (o QR code abre aqui), duas colunas no topo a partir de 900px. */
+:root{
+  --creme:#F4ECDD; --areia:#EADFCB; --tinta:#1F1A17; --texto:#4A3F38;
+  --terracota:#A3462A; --dourado:#D9AE55; --suave:#6B5E52; --linha:#D8CAB2;
+  --display:'Fraunces', Georgia, 'Times New Roman', serif;
+  --corpo:'Crimson Pro', Georgia, 'Times New Roman', serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--creme);color:var(--tinta);font:400 21px/1.55 var(--corpo)}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--terracota)}
+a:focus-visible{outline:3px solid var(--terracota);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.12;text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{width:100%;max-width:1080px;margin:0 auto;padding:0 20px}
+.texto{max-width:640px}
+
+/* topo */
+.topo{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:20px 0 8px;flex-wrap:wrap}
+.marca{font-family:var(--display);font-weight:600;font-size:19px;color:var(--tinta);text-decoration:none}
+.arroba{font-size:17px;color:var(--suave);text-decoration:none}
+
+/* abertura */
+.abertura{display:grid;gap:28px;padding:16px 0 40px}
+.foto-principal{margin:0}
+.foto-principal img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px}
+.foto-principal figcaption{font-size:16px;color:var(--suave);margin-top:10px;line-height:1.4}
+.sobretitulo{font-family:var(--display);font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--terracota)}
+h1{font-size:clamp(38px,8vw,60px);margin:14px 0 18px}
+.lede{font-size:23px;color:var(--texto)}
+.botao{display:block;text-align:center;background:var(--terracota);color:var(--creme);text-decoration:none;font:600 19px/1 var(--display);padding:19px 22px;border-radius:14px;margin:26px 0 10px}
+.botao:hover{background:#8C3B23}
+.nota-botao{font-size:17px;color:var(--suave);text-align:center}
+
+/* faixa de informações */
+.faixa{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:16px;overflow:hidden;margin:0 0 48px}
+.faixa div{background:var(--areia);padding:16px 14px}
+.faixa dt{font-family:var(--display);font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--terracota)}
+.faixa dd{margin:6px 0 0;font-size:19px;line-height:1.3}
+
+/* seções */
+section{padding:8px 0 44px}
+h2{font-size:clamp(28px,6vw,38px);margin-bottom:14px}
+section p+p{margin-top:12px}
+section>p,section li{color:var(--texto)}
+.temas{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:14px}
+.temas li{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:baseline}
+.temas b{font-family:var(--display);font-size:30px;color:var(--terracota);font-weight:600;line-height:1}
+.temas span{color:var(--tinta)}
+
+.roteiro{background:var(--areia);border-radius:16px;padding:6px 20px;margin-top:18px}
+.roteiro div{display:grid;grid-template-columns:76px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--linha)}
+.roteiro div:last-child{border-bottom:0}
+.roteiro b{font-family:var(--display);font-size:16px;font-weight:600;color:var(--terracota);font-variant-numeric:tabular-nums;padding-top:3px}
+.roteiro span{color:var(--tinta);line-height:1.4}
+
+.foto-larga{margin:0 0 44px}
+.foto-larga img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:18px}
+
+.cuidados{padding-left:22px;margin:14px 0 0}
+.cuidados li{margin-bottom:8px}
+
+/* chamada final */
+.chamada{background:var(--tinta);color:var(--creme);border-radius:20px;padding:32px 22px;margin:8px 0 40px}
+.chamada h2{color:var(--creme)}
+.chamada p{color:#D9CDB8}
+.chamada .botao{background:var(--dourado);color:var(--tinta)}
+.chamada .botao:hover{background:#E6C273}
+.chamada .nota-botao{color:#D9CDB8}
+.chamada a:focus-visible{outline-color:var(--dourado)}
+
+footer{border-top:1px solid var(--linha);padding:22px 0 36px;font-size:17px;color:var(--suave)}
+footer a{color:var(--suave)}
+
+@media (min-width:900px){
+  .abertura{grid-template-columns:1fr 1fr;align-items:center;gap:56px;padding:32px 0 56px}
+  .foto-principal{order:2}
+  .botao{display:inline-block;padding:19px 34px}
+  .nota-botao{text-align:left}
+  .chamada{padding:44px 48px}
+}
+@media (max-width:420px){
+  .faixa{grid-template-columns:1fr}
+  .faixa div{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+  .faixa dd{margin:0;text-align:right}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="topo">
+    <a class="marca" href="/">Psicologia das Pretas</a>
+    <a class="arroba" href="https://www.instagram.com/psico.daspretas/">@psico.daspretas</a>
+  </header>
+
+  <main>
+    <div class="abertura">
+      <figure class="foto-principal">
+        <img src="img/fundadoras.jpg" width="1000" height="1250" alt="Mariana e Priscila lado a lado, sorrindo, diante de tecidos estampados em vermelho e marrom">
+        <figcaption>Mariana Pereira Rosa e Priscila Brasileiro Baptista Peres, psicólogas e fundadoras da Psicologia das Pretas.</figcaption>
+      </figure>
+      <div class="texto">
+        <p class="sobretitulo">Oficina on-line · para estudantes de Psicologia</p>
+        <h1>Psicologia antirracista na prática</h1>
+        <p class="lede">Um encontro de trocas, não uma aula. Vamos pensar juntas e juntos o que é ser psicóloga ou psicólogo antirracista quando a terapia vive sob pressa e as respostas prontas estão no celular.</p>
+        <a class="botao" href="https://forms.gle/rdM3Bn8FGV5qg4aX9">Quero participar</a>
+        <p class="nota-botao">Abre o formulário de inscrição. Dúvidas: <a href="https://ig.me/m/psico.daspretas">@psico.daspretas</a> no Instagram.</p>
+      </div>
+    </div>
+
+    <dl class="faixa">
+      <div><dt>Formato</dt><dd>On-line, ao vivo</dd></div>
+      <div><dt>Duração</dt><dd>90 minutos</dd></div>
+      <div><dt>Data</dt><dd>Sábado, 12 de dezembro</dd></div>
+    </dl>
+
+    <div class="texto">
+      <section>
+        <h2>Para quem é</h2>
+        <p>Estudantes de Psicologia, pessoas recém-formadas e quem já atende e quer aprender a escutar raça, território e tempo na clínica. Não precisa de experiência prévia.</p>
+      </section>
+
+      <section>
+        <h2>O que vamos trabalhar</h2>
+        <ol class="temas">
+          <li><b>1</b><span>Ser antirracista na clínica quando tudo pede pressa e resposta pronta.</span></li>
+          <li><b>2</b><span>Presença e vínculo: o que só a relação terapêutica oferece.</span></li>
+          <li><b>3</b><span>Cuidar das próprias emoções para sustentar a prática clínica.</span></li>
+          <li><b>4</b><span>Escutar raça e território a partir de quatro autores da psicologia negra.</span></li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Como será</h2>
+        <p>Um encontro ao vivo pelo Meet no sábado, 12 de dezembro, com todas as pessoas na mesma sala. Horário e valor ainda vão ser confirmados.</p>
+        <div class="roteiro">
+          <div><b>10 min</b><span>Acolhimento e combinados de sigilo</span></div>
+          <div><b>15 min</b><span>Neusa Santos Souza, Frantz Fanon, Lélia Gonzalez e Beatriz Nascimento</span></div>
+          <div><b>35 min</b><span>Vivências: a linha do tempo da sua formação e um caso fictício em três rodadas</span></div>
+          <div><b>20 min</b><span>Troca em grupo: como raça aparece, ou não, na graduação</span></div>
+          <div><b>10 min</b><span>Fechamento e leituras para continuar</span></div>
+        </div>
+      </section>
+    </div>
+
+    <figure class="foto-larga">
+      <img src="img/encontro.jpg" width="1200" height="800" alt="Priscila em pé e Mariana sentada, sorrindo, diante de cortina amarela e tecido de estampa geométrica">
+    </figure>
+
+    <div class="texto">
+      <section>
+        <h2>Quem conduz</h2>
+        <p>Mariana e Priscila são psicólogas e fundadoras da Psicologia das Pretas, uma casa de cuidado afrocentrado, antirracista e interseccional. São cinco anos de clínica ininterrupta, e a vontade de que esse cuidado não dependa de duas pessoas sozinhas.</p>
+      </section>
+
+      <section>
+        <h2>Cuidados</h2>
+        <ul class="cuidados">
+          <li>Compartilhar experiências pessoais é sempre opcional.</li>
+          <li>O encontro pode ser gravado, e isso é combinado com a turma logo no início.</li>
+          <li>O que é dito no grupo fica no grupo.</li>
+          <li>Câmera e microfone são convites: dá para participar pelo chat.</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="chamada">
+      <h2>Quer participar?</h2>
+      <p>Sábado, 12 de dezembro, on-line. Horário e valor ainda vão ser confirmados: faça sua inscrição e a gente avisa você primeiro.</p>
+      <a class="botao" href="https://forms.gle/rdM3Bn8FGV5qg4aX9">Quero participar</a>
+      <p class="nota-botao">Dúvidas? Chame <a href="https://ig.me/m/psico.daspretas">@psico.daspretas</a> no Instagram.</p>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 Psico das Pretas · <a href="/">Psicoterapia online</a> · <a href="https://www.instagram.com/psico.daspretas/">@psico.daspretas</a> · <a href="/privacidade.html">Privacidade</a> · <a href="/termos.html">Termos</a>
+  </footer>
+</div>
+</body>
+</html>
